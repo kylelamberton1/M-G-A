@@ -1,0 +1,7 @@
+{% extends 'main.html' %}
+{% block MGA %}
+    <h3>All Tasks:</h3>
+    <p>
+    {% for task in tasks %}
+        first_name: {{ task.name }} <br>
+        Description: {{ task.description }} <br>
