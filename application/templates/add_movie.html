@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block MGA %}
+<h2>Now it's time to get creative and start making your movie:</h2>
+<div class='form'>
+    <form method='POST' action=''>
+        <fieldset class="form-field">
+        {{ form.hidden_tag() }}
+        {{ form.title.label }}
+        {{ form.title}}
+        {% if form.title.errors %}
+        <div class='error'>
+            {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{ form.genre.label }}
+        {{ form.genre }}
+        {% if form.genre.errors %}
+        <div class='error'>
+            {% for error in form.genre.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <br>
+        {{ form.plot_summary.label }}
+        {{ form.plot_summary }}
+        {% if form.plot_summary.errors %}
+        <div class='error'>
+            {% for error in form.plot_summary.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </fieldset>
+        <br>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock MGA %}
+

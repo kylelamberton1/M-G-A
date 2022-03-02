@@ -1,7 +1,14 @@
+
 {% extends 'main.html' %}
 {% block MGA %}
-    <h3>All Tasks:</h3>
+    <h3>All Movies:</h3>
     <p>
-    {% for task in tasks %}
-        first_name: {{ task.name }} <br>
-        Description: {{ task.description }} <br>
+    {% for name in read %}
+        first name: {{ name.first_name }} <br>
+        last name: {{ name.last_name }} <br>
+        title: {{ name.title }} <br>
+        genre: {{ name.genre }} <br>
+        plot summary: {{ name.plot_summary }} <br>
+    {% endfor %}
+    </p>
+{% endblock MGA %}

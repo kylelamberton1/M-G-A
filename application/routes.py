@@ -1,22 +1,41 @@
 from application import app, db
 from application.models import Director, Movie
-from application.forms import AddForm
-from flask import render_template
+from application.forms import AddDirectorForm, AddMovieForm
+from flask import render_template, redirect, url_for
 
-@app.route('/add', methods=['GET', 'POST'])
-def add():
-    addform = AddForm()
-    if addform.validate_on_submit():
-        name = Director, Movie(first_name=addform.first_name.data, last_name=addform.last_name.data)
+@app.route('/add_director', methods=['GET', 'POST'])
+def add_director():
+    add_d_form = AddDirectorForm()
+    if add_d_form.validate_on_submit():
+        name = Director(first_name=add_d_form.first_name.data, last_name=add_d_form.last_name.data)
         db.session.add(name)
         db.session.commit()
-    return render_template('add.html', form=addform)
+        return redirect(url_for('add_movie'))
+    return render_template('add_director.html', form=add_d_form)
 
+@app.route('/add_movie', methods=['GET', 'POST'])
+def add_movie():
+    add_m_form = AddMovieForm()
+    if add_m_form.validate_on_submit():
+        name = Movie(title=add_m_form.title.data, genre=add_m_form.genre.data, plot_summary=add_m_form.plot_summary.data)
+        db.session.add(name)
+        db.session.commit()
+    return render_template('add_movie.html', form=add_m_form)
+
+
+'''
 @app.route('/', methods=['GET'])
 @app.route('/read', methods=['GET'])
 def read():
-    read = Director, Movie.query.all()
+    read = Director.query.all()
     return render_template('read.html', read=read)
+'''
 
 
-    
+
+
+
+'''
+read = Movie.query.all()
+name = Movie(title=addform.title.data, genre=addform.genre.data, plot_summary=addform.plot_summary.data)
+'''
