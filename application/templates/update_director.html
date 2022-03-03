@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block MGA %}
+<h2>Please add the director that you wish to attach to this movie:</h2>
+<div class='form'>
+    <form method='POST' action=''>
+        <fieldset class="form-field">
+        {{ form.hidden_tag() }}
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+        {% if form.first_name.errors %}
+        <div class='error'>
+            {% for error in form.first_name.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+        {% if form.last_name.errors %}
+        <div class='error'>
+            {% for error in form.last_name.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </fieldset>
+        <br>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock MGA %}

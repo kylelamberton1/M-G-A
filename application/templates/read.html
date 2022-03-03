@@ -2,13 +2,17 @@
 {% extends 'main.html' %}
 {% block MGA %}
     <h3>All Movies:</h3>
-    <p>
+    
     {% for name in read %}
         first name: {{ name.first_name }} <br>
         last name: {{ name.last_name }} <br>
         title: {{ name.title }} <br>
         genre: {{ name.genre }} <br>
         plot summary: {{ name.plot_summary }} <br>
+        <span><a href="{{ url_for('delete', entry=name.entry) }}">Delete</a></span>
+        <br>
+        <br>
     {% endfor %}
+    
     </p>
 {% endblock MGA %}

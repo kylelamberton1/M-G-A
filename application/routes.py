@@ -20,20 +20,37 @@ def add_movie():
         name = Movie(title=add_m_form.title.data, genre=add_m_form.genre.data, plot_summary=add_m_form.plot_summary.data)
         db.session.add(name)
         db.session.commit()
+        return redirect(url_for('read'))
     return render_template('add_movie.html', form=add_m_form)
 
 
-'''
+@app.route('/', methods=['GET'])
+@app.route('/read', methods=['GET'])
+def read():
+    read = db.session.query(Movie, Director).join(Director, Movie.id == Director.id).all()
+
+    return render_template('read.html', read=read)
+
+@app.route('/delete/<entry>', methods=['GET', 'POST'])
+def delete(entry):
+    name = db.session.query(Movie,Director).filter_by(entry=entry).first()
+    db.session.delete(name)
+    db.session.commit()
+    return redirect(url_for('read'))
+
+
+
+
+
+
+'''    
 @app.route('/', methods=['GET'])
 @app.route('/read', methods=['GET'])
 def read():
     read = Director.query.all()
     return render_template('read.html', read=read)
+
 '''
-
-
-
-
 
 '''
 read = Movie.query.all()
