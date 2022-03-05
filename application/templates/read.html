@@ -2,6 +2,15 @@
 {% block MGA %}
     <h3>All Tasks:</h3>
     <p>
-    {% for task in tasks %}
-        first_name: {{ task.name }} <br>
-        Description: {{ task.description }} <br>
+    {% for read in reads %}
+        <fieldset class="form-field">
+        Director Name: {{ read.director_name }} <br>
+        Title: {{ read.title }} <br>
+        Genre: {{ read.genre}} <br>
+        Plot Summary: {{ read.plot_summary}} <br>
+        </fieldset>
+        <br>
+
+    {% endfor %}
+    </p>
+{% endblock MGA %}
