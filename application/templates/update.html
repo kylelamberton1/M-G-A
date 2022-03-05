@@ -40,8 +40,8 @@
         </fieldset>
         <br>
         <fieldset class="form-field">
-        {{ form.plot_summary.label  }}
-        {{ form.plot_summary (size=100, style="height: 75px;")  }}
+        {{ form.plot_summary.label }}
+        {{ form.plot_summary }}
         {% if form.plot_summary.errors %}
         <div class='error'>
             {% for error in form.plot_summary.errors %}
@@ -55,4 +55,3 @@
     </form>
 </div>
 {% endblock MGA %}
-

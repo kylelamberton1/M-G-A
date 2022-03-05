@@ -10,10 +10,11 @@ class AddForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-
-'''
 class UpdateForm(FlaskForm):
-    name = StringField('Title', validators=[DataRequired(), Length(min=2,max=30)])
-    description = StringField('Description', validators=[DataRequired(), Length(min=2,max=300)])
-    completed = BooleanField('Completed')
-    submit = SubmitField('Update')'''
+    director_name = StringField('Director Name', validators=[DataRequired(), Length(min=2,max=60)])
+    title = StringField('Title', validators=[DataRequired(), Length(min=1,max=100)])
+    genre = StringField('Genre', validators=[DataRequired(), Length(min=2,max=25)])
+    plot_summary = StringField('Plot Summary', validators=[DataRequired(), Length(min=1,max=1000)])
+    submit = SubmitField('Submit')
+
+

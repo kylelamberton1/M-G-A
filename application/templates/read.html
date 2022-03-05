@@ -8,9 +8,11 @@
         Title: {{ read.title }} <br>
         Genre: {{ read.genre}} <br>
         Plot Summary: {{ read.plot_summary}} <br>
+        <span><a href="{{ url_for('update', director_name=read.director_name) }}">Update</a></span> 
+        <span><a href="{{ url_for('delete', director_name=read.director_name) }}">Delete</a></span>
         </fieldset>
         <br>
-
+           
     {% endfor %}
     </p>
 {% endblock MGA %}
