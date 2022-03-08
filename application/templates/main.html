@@ -7,8 +7,18 @@
         style="text-align:center;background-color:rgb(61, 166, 207);">
         
         <h1>Welcome to the Movie Generator App</h1>
+        <div class="navbar">
+            {% if current_user.is_authenticated %}
         <span><a href="{{ url_for('add') }}">Add</a></span>
         <span><a href="{{ url_for('read') }}">Read</a></span>
+        <span><a href="{{ url_for('logout') }}">Logout</a></span>
+        <span><a href="{{ url_for('account') }}">Account</a></span>
+            {% else %}
+        <span><a href="{{ url_for('home') }}">Home</a></span>
+        <span><a href="{{ url_for('signup') }}">Sign Up</a></span>
+        <span><a href="{{ url_for('login') }}">Log In</a></span>
+            {% endif %}
+        </div>
         {% block MGA %}{% endblock MGA %}
     
     </body>
