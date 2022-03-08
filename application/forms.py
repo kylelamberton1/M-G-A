@@ -1,12 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from application import bcrypt
 from application.models import User
-from application import db, bcrypt
 from wtforms.validators import DataRequired, Length, ValidationError
+
 
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2,max=30)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=300)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=100)])
     submit = SubmitField('Submit')
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -15,9 +16,10 @@ class SignupForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2,max=30)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=300)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=100)])
+    remember = BooleanField('Remember Me')
     submit = SubmitField('Submit')
-    
+
     def validate_details(self, username, password):
         user = User.query.filter_by(username=username.data).first()
 
@@ -32,7 +34,7 @@ class LoginForm(FlaskForm):
 
 class AccountupdateForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2,max=30)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=300)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=2,max=100)])
     submit = SubmitField('Submit')
     
     def validate_username(self, username):

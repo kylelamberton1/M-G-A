@@ -7,7 +7,7 @@
         {{ form.hidden_tag() }}
         {{ form.username.label }}
         {{ form.username }}
-        {% if form.director_name.errors %}
+        {% if form.username.errors %}
         <div class='error'>
             {% for error in form.username.errors %}
                 <span>{{ error }}</span>
@@ -17,13 +17,14 @@
         <br>
         {{ form.password.label }}
         {{ form.password}}
-        {% if form.title.errors %}
+        {% if form.password.errors %}
         <div class='error'>
-            {% for error in form.title.errors %}
+            {% for error in form.password.errors %}
                 <span>{{ error }}</span>
             {% endfor %}
         </div>
         {% endif %}
+        </Fieldset>
         <br>
         {{ form.submit }}
     </form>

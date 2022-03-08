@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
 {% block MGA %}
-<h2>Please create an account before you access the Movie Generator App:</h2>
+<h1>{{ current_user.username }}'s Account Details</h1>
+<p>
+User Name: {{ current_user.username }}<br>
+</p> 
+<h2>Update your account details:</h2>
 <div class='form'>
     <form method='POST' action=''>
         <fieldset class="form-field">
@@ -24,9 +28,21 @@
             {% endfor %}
         </div>
         {% endif %}
+        <br>
         </Fieldset>
         <br>
-        {{ form.submit }}
+        
+        <div class="form-group">
+                {{ form.submit }}
+        </div>
+        
+
+        <form method="POST" action="">
+        <div class="form-group">
+                {{ delete.delete }}
+
+
+
     </form>
 </div>
 {% endblock MGA %}

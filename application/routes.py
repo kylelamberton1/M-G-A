@@ -39,7 +39,7 @@ def login():
     loginform = LoginForm()
    
     if loginform.validate_on_submit():
-        user=User.query.filter_by(email=loginform.email.data).first()
+        user=User.query.filter_by(username=loginform.username.data).first()
         
         if user and bcrypt.check_password_hash(user.password, loginform.password.data):
             login_user(user, remember=loginform.remember.data)
@@ -91,7 +91,7 @@ def account():
         
     
     if delete_account.is_submitted():
-        user = User.query.filter_by(userID = current_user.userID).first()
+        user = User.query.filter_by(username = current_user.username).first()
         db.session.delete(user)
         db.session.commit()
         return redirect(url_for('signup'))
