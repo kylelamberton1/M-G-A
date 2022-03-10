@@ -1,4 +1,6 @@
 #!/bin/bash
 
-#test
+
 echo "Build stage"
+
+docker-compose build
