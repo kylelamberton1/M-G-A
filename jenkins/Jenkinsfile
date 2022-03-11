@@ -30,5 +30,9 @@ pipeline {
                 sh "bash jenkins/deploy.sh"
             }
         }
+
+        {always {
+             junit 'test_reports/*junit_report.xml' 
+             cobertura AutoUpdateHealth: False, AutoUpdateStability: False, coberturaReportFile: 'test_reports/*junit_report.xml'
     }
 }
