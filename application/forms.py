@@ -60,6 +60,6 @@ class UpdateForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=1,max=100)])
     genre = StringField('Genre', validators=[DataRequired(), Length(min=2,max=25)])
     plot_summary = StringField('Plot Summary', validators=[DataRequired(), Length(min=1,max=1000)])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Subbmit'
 
 
