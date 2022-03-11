@@ -1,0 +1,29 @@
+version: "3.8"
+services: 
+  m-g-a:
+    container_name: m-g-a
+    image: kylelamberton1/m-g-a:latest
+    build: .
+    ports:
+    - published: 80
+      target: 5000
+    environment:
+      DATABASE_URI: mysql+pymysql://kylelamberton1@kylelamberton1985:${MYSQL_ROOT_PASSWORD}@kylelamberton1985.mysql.database.azure.com/directordb
+      CREATE_SCHEMA:
+    depends_on:
+    - database
+  database:
+    container_name: mga_database
+    image: mysql:5.7
+    environment: 
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: directordb
+    volumes:
+    - type: volume
+      source: mga_database_volume
+      target: /var/lib/mysql
+volumes:
+  mga_database_volume:
+
+
+
